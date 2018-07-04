@@ -11,7 +11,7 @@
 
 FactoryBot.define do
   factory :lesson do
-    title "MyString"
-    description "MyText"
+    title { Faker::Educator.course }
+    description { Faker::Hipster.sentences }
   end
 end
