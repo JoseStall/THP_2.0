@@ -23,6 +23,7 @@ gem 'puma', '~> 3.11'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'active_model_serializers'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'relaxed-rubocop', '~> 2.3', '>= 2.3.1'
 gem 'rubocop', require: false
@@ -35,6 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.7'
   gem 'shoulda', '~> 3.5'
   gem 'shoulda-matchers', '~> 2.0'
@@ -42,6 +44,10 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'guard'
+  gem 'guard-annotate'
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
