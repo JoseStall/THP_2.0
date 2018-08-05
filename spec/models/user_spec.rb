@@ -38,6 +38,16 @@ describe User do
     expect(user.username).not_to be_blank
     expect(user.password).to be_blank
   end
+  it "follows lessons link" do
+    create(:user, :with_lessons)
+    user = User.first
+    expect(user.lessons.first.creator).to eq(user)
+  end
+  it "cascade destroys its lessons" do
+    user = create(:user, :with_lessons)
+    expect{ user.destroy }.to change(Lesson, :count).to(0)
+  end
+
   it "doesn't need confirmation" do
     expect(create(:user).confirmation_required?).to be_falsey
   end

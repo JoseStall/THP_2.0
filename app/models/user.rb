@@ -33,6 +33,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   include DeviseTokenAuth::Concerns::User
+  has_many :lessons, foreign_key: 'creator_id', inverse_of: 'creator', dependent: :destroy
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   def as_json(opt = nil)
     super({ only: %i[id username email confirmed_at uid provider] }.merge(opt.to_h))

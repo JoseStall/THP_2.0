@@ -11,6 +11,7 @@
 
 FactoryBot.define do
   factory :lesson do
+    creator { create(:user) }
     title { Faker::Educator.course }
     description { Faker::Hipster.sentences }
   end
